@@ -32,3 +32,9 @@ https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
    provides the file for provided path
    there is no active server running
 
+## Current working directory (CWD)
+
+The directory from where the node application was started. All file references are constructed from CWD.
+To avoid confusion, use `__dirname` in front of the paths to get the correct reference.
+`__dirname` may or may not end with slash `/`. For consistency, use `path.join()`.
+
