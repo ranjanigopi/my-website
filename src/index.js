@@ -21,6 +21,9 @@ const routes = {
             response.write('Saved');
         }
     },
+    '/time': function(request, response) {
+        response.write(new Date().toString());
+    },
     404: function(request, response) {
         response.writeHead(404);
         response.write('Not Found');

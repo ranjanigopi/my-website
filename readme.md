@@ -21,5 +21,14 @@ web server - uses http porotocol
 https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
 
 
+## Two types of website
 
+ - Managed website
+   one server handles requests and responds
+   runs all the time to process the request
+
+ - Static website
+   simple file server, with index.html as entry point
+   provides the file for provided path
+   there is no active server running
 
