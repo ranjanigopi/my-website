@@ -1,4 +1,5 @@
 const http = require('http');
+const fs = require('fs');
 
 let user = {};
 const getJsonString = (obj) => JSON.stringify(obj, null, '  ');
@@ -6,8 +7,9 @@ const getJsonString = (obj) => JSON.stringify(obj, null, '  ');
 const server = http.createServer();
 const routes = {
     '/': function(request, response) {
-        response.writeHead(200, { 'Content-Type': 'text/html' })
-        response.write('<h1>Hello</h1>');
+        response.writeHead(200, { 'Content-Type': 'text/html' });
+        const html = fs.readFileSync('../public/index.html');
+        response.write(html);
     },
     '/about': function(request, response) {
         response.write('About Me');
