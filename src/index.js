@@ -1,17 +1,13 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const file = require('./file');
 
 let user = {};
 const getJsonString = (obj) => JSON.stringify(obj, null, '  ');
 
 const server = http.createServer();
 const routes = {
-    '/': function(request, response) {
-        response.writeHead(200, { 'Content-Type': 'text/html' });
-        const html = fs.readFileSync(path.join(__dirname, '../public/index.html'));
-        response.write(html);
-    },
     '/about': function(request, response) {
         response.write('About Me');
     },
@@ -45,10 +41,15 @@ server.on('request', function(request, response) {
         body = body.length ? JSON.parse(body) : {};
         request.body = body;
 
-        let handler = routes[request.url];
-        handler = handler || routes[404];
+        if (request.url === '/') {
+            request.url = '/index.html';
+        }
 
-        handler(request, response);
+        if (!file.fileHandler(request, response)) {
+            let handler = routes[request.url];
+            handler = handler || routes[404];
+            handler(request, response);
+        }
 
         response.end();
     });
