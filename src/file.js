@@ -3,7 +3,9 @@ const path = require('path')
 
 const mimeTypes = {
     html: 'text/html',
-    css: 'text/css'
+    css: 'text/css',
+    jpg: 'image/jpeg',
+    png: 'image/png'
 }
 
 const getMimeType = (file) => {
