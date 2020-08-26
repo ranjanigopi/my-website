@@ -2,32 +2,27 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const file = require('./file');
+const router = require('./router');
 
 let user = {};
 const getJsonString = (obj) => JSON.stringify(obj, null, '  ');
 
 const server = http.createServer();
-const routes = {
-    '/about': function(request, response) {
-        response.write('About Me');
-    },
-    '/user': function(request, response) {
-        if (request.method === 'GET') {
-            response.writeHead(200, { 'Content-Type': 'application/json' })
-            response.write(getJsonString(user));
-        } else if (request.method === 'POST') {
-            user = request.body;
-            response.write('Saved');
-        }
-    },
-    '/time': function(request, response) {
-        response.write(new Date().toString());
-    },
-    404: function(request, response) {
-        response.writeHead(404);
-        response.write('Not Found');
-    }
-};
+
+router.get('/about', function(request, response) {
+    response.write('About Me');
+});
+router.get('/user', function(request, response) {
+    response.writeHead(200, { 'Content-Type': 'application/json' })
+    response.write(getJsonString(user));
+});
+router.post('/user', function(request, response) {
+    user = request.body;
+    response.write('Saved');
+});
+router.get('/time', function(request, response) {
+    response.write(new Date().toString());
+});
 
 server.on('request', function(request, response) {
     console.log('Handling', request.method, request.url);
@@ -45,10 +40,9 @@ server.on('request', function(request, response) {
             request.url = '/index.html';
         }
 
-        if (!file.fileHandler(request, response)) {
-            let handler = routes[request.url];
-            handler = handler || routes[404];
-            handler(request, response);
+        if (!file.fileHandler(request, response) && !router.routeHandler(request, response)) {
+            response.writeHead(404);
+            response.write('Not Found');
         }
 
         response.end();
