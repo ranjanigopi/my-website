@@ -16,3 +16,11 @@ nav li {
     display: inline-block;
     padding: 20px;
 }
+
+.greeting {
+    font-size: 2em;
+}
+
+#main {
+    background-color: #ddee33;
+}
