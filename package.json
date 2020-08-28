@@ -4,11 +4,15 @@
     "description": "nodejswebsite",
     "main": "index.js",
     "scripts": {
-        "start": "nodemon src/index.js"
+        "start": "nodemon src/index.js",
+        "transform": "babel public/index.jsx --out-file public/index.js"
     },
     "author": "Ranjani",
     "license": "ISC",
     "devDependencies": {
+        "@babel/cli": "^7.10.5",
+        "@babel/core": "^7.11.4",
+        "@babel/preset-react": "^7.10.4",
         "nodemon": "^2.0.4"
     }
 }

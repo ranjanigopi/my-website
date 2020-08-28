@@ -1,23 +1,13 @@
-const Greeting = (props) => React.createElement(
-    'span', { className: 'greeting' },
-    'First react code ' + props.content
-);
+const Greeting = props => /*#__PURE__*/ React.createElement("span", {
+    className: "greeting"
+}, "First react code ", props.content);
 
-const Home = () => React.createElement(
-    'div', { id: 'main-page' }, [
-        'hello',
-        React.createElement(
-            Greeting, { content: 'yay!' }
-        ),
-        React.createElement(
-            Greeting, { content: 'yaVayy!' }
-        ),
-    ]
-)
+const Home = () => /*#__PURE__*/ React.createElement("div", {
+    id: "main-page"
+}, "hello", /*#__PURE__*/ React.createElement(Greeting, {
+    content: "yay!"
+}), /*#__PURE__*/ React.createElement(Greeting, {
+    content: "yaVayy!"
+}));
 
-ReactDOM.render(
-    React.createElement(
-        Home
-    ),
-    document.getElementById('main')
-)
+ReactDOM.render( /*#__PURE__*/ React.createElement(Home, null), document.getElementById('main'));
