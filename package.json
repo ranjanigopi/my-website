@@ -4,7 +4,7 @@
     "description": "nodejswebsite",
     "main": "index.js",
     "scripts": {
-        "start": "nodemon src/index.js",
+        "start": "nodemon src/server/index.js",
         "transform": "babel public/index.jsx --out-file public/index.js"
     },
     "author": "Ranjani",
