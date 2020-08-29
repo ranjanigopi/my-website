@@ -13,7 +13,7 @@ const getMimeType = (file) => {
 }
 
 const handler = (request, response) => {
-    const fileName = path.join(__dirname, '../public', request.url);
+    const fileName = path.join(__dirname, '../../public', request.url);
 
     if (fs.existsSync(fileName)) {
         const file = fs.readFileSync(fileName);
