@@ -6,7 +6,7 @@
     "scripts": {
         "start": "nodemon src/server/index.js",
         "transform": "babel public/index.jsx --out-file public/index.js",
-        "build": "webpack --mode production"
+        "build": "rimraf public && webpack --mode production"
     },
     "author": "Ranjani",
     "license": "ISC",
@@ -17,6 +17,7 @@
         "babel-loader": "^8.1.0",
         "html-webpack-plugin": "^4.3.0",
         "nodemon": "^2.0.4",
+        "rimraf": "^3.0.2",
         "webpack": "^4.44.1",
         "webpack-cli": "^3.3.12"
     },
