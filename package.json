@@ -5,7 +5,8 @@
     "main": "index.js",
     "scripts": {
         "start": "nodemon src/server/index.js",
-        "transform": "babel public/index.jsx --out-file public/index.js"
+        "transform": "babel public/index.jsx --out-file public/index.js",
+        "build": "webpack --mode production"
     },
     "author": "Ranjani",
     "license": "ISC",
@@ -13,6 +14,8 @@
         "@babel/cli": "^7.10.5",
         "@babel/core": "^7.11.4",
         "@babel/preset-react": "^7.10.4",
-        "nodemon": "^2.0.4"
+        "nodemon": "^2.0.4",
+        "webpack": "^4.44.1",
+        "webpack-cli": "^3.3.12"
     }
 }
